@@ -25,6 +25,29 @@ class EmployeeResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\Section::make('Relationships')
+                    ->schema([
+                        Forms\Components\Select::make('country_id')
+                            ->relationship('country', titleAttribute:'name')
+                            ->searchable()
+                            ->preload()
+                            ->required(),
+                        Forms\Components\Select::make('state_id')
+                            ->relationship('state', titleAttribute:'name')
+                            ->searchable()
+                            ->preload()
+                            ->required(),
+                        Forms\Components\Select::make('city_id')
+                            ->relationship('city', titleAttribute:'name')
+                            ->searchable()
+                            ->preload()
+                            ->required(),
+                        Forms\Components\Select::make('department_id')
+                            ->relationship('department', titleAttribute:'name')
+                            ->searchable()
+                            ->preload()
+                            ->required(),
+                    ])->columns(2),
                 Forms\Components\Section::make('User Name')
                     ->description('Put the user name details in.')
                     ->schema([
@@ -38,21 +61,6 @@ class EmployeeResource extends Resource
                             ->required()
                             ->maxLength(255),
                     ])->columns(3),
-                /*Forms\Components\Section::make('User Address')
-                    ->schema([
-                        Forms\Components\TextInput::make('country_id')
-                            ->required()
-                            ->numeric(),
-                        Forms\Components\TextInput::make('state_id')
-                            ->required()
-                            ->numeric(),
-                        Forms\Components\TextInput::make('city_id')
-                            ->required()
-                            ->numeric(),
-                        Forms\Components\TextInput::make('department_id')
-                            ->required()
-                            ->numeric(),
-                    ])->columns(3),*/
                 Forms\Components\Section::make('User Address')
                     ->schema([
                         Forms\Components\TextInput::make('address')
