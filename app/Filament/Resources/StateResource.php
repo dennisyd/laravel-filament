@@ -93,7 +93,8 @@ class StateResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\CitiesRelationManager::class,
+            RelationManagers\EmployeesRelationManager::class,
         ];
     }
 
